@@ -1,0 +1,20 @@
+>> sudo apt-get update
+>> sudo apt-get install apache2 openssl tree
+>> sudo a2enmod ssl
+>> tree /etc/apache2/site*
+>> sudo a2ensite default-ssl
+>> ls -l /etc/apache2/
+>> sudo mkdir /etc/apache2/ssl
+>> sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+>> sudo cp /etc/apache2/site-available/default-ssl.conf /etc/apache2/site-available/default-ssl.conf.backup
+>> sudo nano /etc/apache2/site-available/default-ssl.conf 
+	ServerName ip:443
+      
+	SSL---/etc/apache2/ssl/apache.crt
+	SSL---/etc/apache2/ssl/apache.key
+>> sudo ss -ant
+>> sudo systemctl restart apache2
+
+go to browser
+https://ip:443  
+
